@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:task/repository/services.dart';
 import 'package:task/widgets/loader.dart';
+import 'package:task/screens/add.dart';
 
 void main() => runApp(MyApp());
 
@@ -28,12 +29,46 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  var listItems;
 
-  ListView _buildTaskList (task){
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  Future<void> undoDeletion(index, item){
+    setState((){
+      listItems.insert(index, item);
+    });
+  }
+
+  ListView _buildTaskList (tasks){
     return ListView.builder(
-      itemCount: task.length,
-      itemBuilder: (context, index){
-        return _buildTaskWidget(task[index]);
+      itemCount: tasks.length,
+      itemBuilder: (context, index) {
+        return Dismissible(
+//          key: ObjectKey(tasks[index]),
+          key: UniqueKey(),
+          child: Container(
+            child: _buildTaskWidget(tasks[index]),
+          ),
+          onDismissed: (direction) {
+            //To delete
+            deleteTask(tasks[index]['id']);
+
+            var item = listItems.elementAt(index);
+
+            //To show a snackbar with the UNDO button
+            Scaffold.of(context).showSnackBar(SnackBar(
+            content: Text("Item deleted"),
+            action: SnackBarAction(
+                label: "UNDO",
+                onPressed: () {
+                  //To undo deletion
+                  undoDeletion(index, item);
+                })));
+          },
+        );
       },
     );
   }
@@ -58,9 +93,10 @@ class _MyHomePageState extends State<MyHomePage> {
           future: fetchAllTask(),
           builder: (context, snapshot){
             if(snapshot.hasData){
-              List task = snapshot.data;
-              print(task);
-              return  _buildTaskList(task);
+              List tasks = snapshot.data;
+              listItems = tasks;
+
+              return  _buildTaskList(tasks);
             } else if(snapshot.hasError) {
               return Text("${snapshot.error}");
             }
@@ -70,7 +106,9 @@ class _MyHomePageState extends State<MyHomePage> {
           }
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){},
+        onPressed: (){
+          Navigator.push(context, MaterialPageRoute(builder: (context) => AddTask()));
+        },
         tooltip: 'Add Task',
         child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
