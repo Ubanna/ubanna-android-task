@@ -16,7 +16,7 @@ Future fetchAllTask() async {
   }
 }
 
-Future addNewTask(String task) async {
+Future addNewTask(String task, String vendor, String amount) async {
   final response = await http.post('http://evening-sea-75226.herokuapp.com/task',
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
