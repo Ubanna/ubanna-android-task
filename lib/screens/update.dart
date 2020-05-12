@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 // import 'package:task/main.dart';
 import 'package:task/repository/services.dart';
 
-class AddTask extends StatefulWidget {
+class UpdateTask extends StatefulWidget {
 
   @override
-  _AddTask createState() => _AddTask();
+  _UpdateTask createState() => _UpdateTask();
 }
 
-class _AddTask extends State<AddTask>{
+class _UpdateTask extends State<UpdateTask>{
   var _taskTextInput =  TextEditingController();
   var _vendorTextInput =  TextEditingController();
   var _amountTextInput =  TextEditingController();
@@ -72,7 +72,7 @@ class _AddTask extends State<AddTask>{
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
-        title: Text('Add Task'),
+        title: Text('Update Task'),
       ),
       body: ListView(
         children: <Widget>[
@@ -83,9 +83,9 @@ class _AddTask extends State<AddTask>{
             margin: EdgeInsets.fromLTRB(45, 1, 45, 1),
             child: RaisedButton(
               color: Colors.blueAccent,
-              child: Text('Add Task', style: TextStyle(color: Colors.white)),
+              child: Text('Update Task', style: TextStyle(color: Colors.white)),
               onPressed: () async {
-                 var res = await addNewTask(_taskTextInput.text, _vendorTextInput.text,  _amountTextInput.text);
+                 var res = await updateNewTask(_taskTextInput.text, _vendorTextInput.text,  _amountTextInput.text, taskId);
                  print(res);
                   Navigator.pop(context);
               },
