@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task/models/task.dart';
 // import 'package:task/main.dart';
 // import 'package:task/repository/services.dart';
 
@@ -69,6 +70,7 @@ class _UpdateTask extends State<UpdateTask>{
 
   @override
   Widget build(BuildContext context) {
+    // final Task task = ModalRoute.of(context).settings.arguments;
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
@@ -85,7 +87,7 @@ class _UpdateTask extends State<UpdateTask>{
               color: Colors.blueAccent,
               child: Text('Update Task', style: TextStyle(color: Colors.white)),
               onPressed: () async {
-                //  var res = await updateNewTask(_taskTextInput.text, _vendorTextInput.text,  _amountTextInput.text, taskId);
+                //  var res = await updateNewTask(_taskTextInput.text, _vendorTextInput.text,  _amountTextInput.text, task);
                 //  print(res);
                   Navigator.pop(context);
               },
