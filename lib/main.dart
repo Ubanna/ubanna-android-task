@@ -79,6 +79,9 @@ class _MyHomePageState extends State<MyHomePage> {
       leading: Icon(Icons.assignment),
       title: Text(task['name']),
       subtitle: Text(task['created_at']),
+      onTap: (){
+
+      },
     );
   }
 
