@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:task/models/task.dart';
 // import 'package:task/main.dart';
 // import 'package:task/repository/services.dart';
 
 class UpdateTask extends StatefulWidget {
+  UpdateTask({Key key, this.task}) : super(key: key);
+  final Map task;
 
   @override
   _UpdateTask createState() => _UpdateTask();
@@ -13,9 +16,24 @@ class _UpdateTask extends State<UpdateTask>{
   var _vendorTextInput =  TextEditingController();
   var _amountTextInput =  TextEditingController();
 
+  var id;
+  var name;
+  var amount;
+  var vendor;
+  var createdAt;
+  var updatedAt;
+
   @override
   void initState() {
     super.initState();
+
+    setState(() {
+      id = this.widget.task['id'];
+      name = this.widget.task['name'];
+      amount = this.widget.task['amount'];
+      vendor = this.widget.task['vendor'];
+      print(this.widget.task);
+    });
   }
 
   // dispose after use
@@ -69,6 +87,7 @@ class _UpdateTask extends State<UpdateTask>{
 
   @override
   Widget build(BuildContext context) {
+    // final Task task = ModalRoute.of(context).settings.arguments;
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
@@ -85,7 +104,7 @@ class _UpdateTask extends State<UpdateTask>{
               color: Colors.blueAccent,
               child: Text('Update Task', style: TextStyle(color: Colors.white)),
               onPressed: () async {
-                //  var res = await updateNewTask(_taskTextInput.text, _vendorTextInput.text,  _amountTextInput.text, taskId);
+                //  var res = await updateNewTask(_taskTextInput.text, _vendorTextInput.text,  _amountTextInput.text, task);
                 //  print(res);
                   Navigator.pop(context);
               },

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:task/repository/services.dart';
 import 'package:task/widgets/loader.dart';
 import 'package:task/screens/add.dart';
+import 'package:task/screens/update.dart';
 
 void main() => runApp(MyApp());
 
@@ -79,9 +80,14 @@ class _MyHomePageState extends State<MyHomePage> {
       leading: Icon(Icons.assignment),
       title: Text(task['name']),
       subtitle: Text(task['created_at']),
-      onTap: (){
-
-      },
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => UpdateTask(task: task),
+          ),
+        );
+      }
     );
   }
 
