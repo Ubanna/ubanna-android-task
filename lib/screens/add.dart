@@ -77,6 +77,8 @@ class _AddTask extends State<AddTask>{
       body: ListView(
         children: <Widget>[
           inputWidget(),
+          inputWidgetForVendor(),
+          inputWidgetForAmount(),
           Container(
             margin: EdgeInsets.fromLTRB(45, 1, 45, 1),
             child: RaisedButton(
