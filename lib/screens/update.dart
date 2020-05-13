@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 // import 'package:task/main.dart';
-import 'package:task/repository/services.dart';
+// import 'package:task/repository/services.dart';
 
 class UpdateTask extends StatefulWidget {
 
@@ -85,8 +85,8 @@ class _UpdateTask extends State<UpdateTask>{
               color: Colors.blueAccent,
               child: Text('Update Task', style: TextStyle(color: Colors.white)),
               onPressed: () async {
-                 var res = await updateNewTask(_taskTextInput.text, _vendorTextInput.text,  _amountTextInput.text, taskId);
-                 print(res);
+                //  var res = await updateNewTask(_taskTextInput.text, _vendorTextInput.text,  _amountTextInput.text, taskId);
+                //  print(res);
                   Navigator.pop(context);
               },
             ),
