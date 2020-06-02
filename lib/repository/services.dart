@@ -31,7 +31,7 @@ Future addNewTask(String task, String vendor, String amount) async {
   );
   if (response.statusCode == 201) {
     // If the server did return a 200 OK response, then parse the JSON.
-    List collections = json.decode(response.body);
+    Map<String, dynamic> collections = json.decode(response.body);
     return collections;
   } else {
     // If the server did not return a 200 OK response, then throw an exception.
@@ -44,7 +44,7 @@ Future deleteTask(taskId) async {
       await http.get('http://evening-sea-75226.herokuapp.com/api/task/$taskId');
   if (response.statusCode == 204) {
     // If the server did return a 200 OK response, then parse the JSON.
-    List collections = json.decode(response.body);
+    Map<String, dynamic> collections = json.decode(response.body);
     return collections;
 //    return collections.map((model) => Task.fromJson(model)).toList();
   } else {
@@ -67,7 +67,7 @@ Future updateNewTask(String task, String vendor, String amount, taskId) async {
   );
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response, then parse the JSON.
-    List collections = json.decode(response.body);
+    Map<String, dynamic> collections = json.decode(response.body);
     return collections;
   } else {
     // If the server did not return a 200 OK response, then throw an exception.

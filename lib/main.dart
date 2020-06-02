@@ -35,6 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
+    listItems = fetchAllTask();
   }
 
   Future<void> undoDeletion(index, item) {
@@ -49,7 +50,9 @@ class _MyHomePageState extends State<MyHomePage> {
       itemBuilder: (context, index) {
         return Dismissible(
 //          key: ObjectKey(tasks[index]),
-          key: UniqueKey(),
+          // key: UniqueKey(),
+          key: Key(UniqueKey().toString()),
+          // key: Key(tasks[index]),
           child: Container(
             child: _buildTaskWidget(tasks[index]),
           ),
@@ -86,7 +89,9 @@ class _MyHomePageState extends State<MyHomePage> {
               builder: (context) => UpdateTask(task: task),
             ),
           );
-          // await fetchAllTask();
+          setState(() {
+            listItems = fetchAllTask();
+          });
         });
   }
 
@@ -98,7 +103,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: FutureBuilder(
-          future: fetchAllTask(),
+          future: listItems,
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               List tasks = snapshot.data;
@@ -113,9 +118,12 @@ class _MyHomePageState extends State<MyHomePage> {
             );
           }),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => AddTask()));
+        onPressed: () async {
+          await Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => AddTask()));
+          setState(() {
+            listItems = fetchAllTask();
+          });
         },
         tooltip: 'Add Task',
         child: Icon(Icons.add),
