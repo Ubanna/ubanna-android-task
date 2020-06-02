@@ -37,13 +37,13 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
   }
 
-  Future<void> undoDeletion(index, item){
-    setState((){
+  Future<void> undoDeletion(index, item) {
+    setState(() {
       listItems.insert(index, item);
     });
   }
 
-  ListView _buildTaskList (tasks){
+  ListView _buildTaskList(tasks) {
     return ListView.builder(
       itemCount: tasks.length,
       itemBuilder: (context, index) {
@@ -61,13 +61,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
             //To show a snackbar with the UNDO button
             Scaffold.of(context).showSnackBar(SnackBar(
-            content: Text("Item deleted"),
-            action: SnackBarAction(
-                label: "UNDO",
-                onPressed: () {
-                  //To undo deletion
-                  undoDeletion(index, item);
-                })));
+                content: Text("Item deleted"),
+                action: SnackBarAction(
+                    label: "UNDO",
+                    onPressed: () {
+                      //To undo deletion
+                      undoDeletion(index, item);
+                    })));
           },
         );
       },
@@ -77,18 +77,17 @@ class _MyHomePageState extends State<MyHomePage> {
   // build the list widget
   Widget _buildTaskWidget(task) {
     return ListTile(
-      leading: Icon(Icons.assignment),
-      title: Text(task['name']),
-      subtitle: Text(task['created_at']),
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => UpdateTask(task: task),
-          ),
-        );
-      }
-    );
+        leading: Icon(Icons.assignment),
+        title: Text(task['name']),
+        subtitle: Text(task['created_at']),
+        onTap: () async {
+          await Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => UpdateTask(task: task),
+            ),
+          );
+          // await fetchAllTask();
+        });
   }
 
   @override
@@ -100,23 +99,23 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: FutureBuilder(
           future: fetchAllTask(),
-          builder: (context, snapshot){
-            if(snapshot.hasData){
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
               List tasks = snapshot.data;
               listItems = tasks;
 
-              return  _buildTaskList(tasks);
-            } else if(snapshot.hasError) {
+              return _buildTaskList(tasks);
+            } else if (snapshot.hasError) {
               return Text("${snapshot.error}");
             }
             return Center(
               child: ShowLoader(),
             );
-          }
-      ),
+          }),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){
-          Navigator.push(context, MaterialPageRoute(builder: (context) => AddTask()));
+        onPressed: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => AddTask()));
         },
         tooltip: 'Add Task',
         child: Icon(Icons.add),
