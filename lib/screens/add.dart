@@ -33,7 +33,10 @@ class _AddTask extends State<AddTask> {
       padding: EdgeInsets.all(10),
       child: TextField(
         controller: _taskTextInput,
-        decoration: InputDecoration(hintText: "Eg, Business name limited..."),
+        decoration: InputDecoration(
+            border: OutlineInputBorder(),
+            labelText: "Task",
+            hintText: "Eg, Go to store..."),
       ),
     );
   }
@@ -45,7 +48,9 @@ class _AddTask extends State<AddTask> {
       child: TextField(
         controller: _vendorTextInput,
         decoration: InputDecoration(
-            hintText: "Eg, Lifemate furnitures, Oros Computers, Mint and hams"),
+            border: OutlineInputBorder(),
+            labelText: "Description",
+            hintText: "Eg, Give a short description"),
       ),
     );
   }
@@ -56,7 +61,10 @@ class _AddTask extends State<AddTask> {
       padding: EdgeInsets.all(10),
       child: TextField(
         controller: _amountTextInput,
-        decoration: InputDecoration(hintText: "Eg, 1500"),
+        decoration: InputDecoration(
+            border: OutlineInputBorder(),
+            labelText: "Cost",
+            hintText: "Eg, 1500"),
       ),
     );
   }

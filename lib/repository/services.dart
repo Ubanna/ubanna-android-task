@@ -44,8 +44,9 @@ Future deleteTask(taskId) async {
       await http.get('http://evening-sea-75226.herokuapp.com/api/task/$taskId');
   if (response.statusCode == 204) {
     // If the server did return a 200 OK response, then parse the JSON.
-    Map<String, dynamic> collections = json.decode(response.body);
-    return collections;
+    // Map<String, dynamic> collections = json.decode(response.body);
+    // return collections;
+    print("Item deleted");
 //    return collections.map((model) => Task.fromJson(model)).toList();
   } else {
     // If the server did not return a 200 OK response, then throw an exception.

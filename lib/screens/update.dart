@@ -25,6 +25,9 @@ class _UpdateTask extends State<UpdateTask> {
 
   @override
   void initState() {
+    _taskTextInput.text = this.widget.task['name'];
+    _vendorTextInput.text = this.widget.task['vendor'];
+    _amountTextInput.text = this.widget.task['amount'].toString();
     super.initState();
 
     setState(() {
@@ -52,7 +55,10 @@ class _UpdateTask extends State<UpdateTask> {
       padding: EdgeInsets.all(10),
       child: TextField(
         controller: _taskTextInput,
-        decoration: InputDecoration(hintText: "Eg, Business name limited..."),
+        decoration: InputDecoration(
+            border: OutlineInputBorder(),
+            labelText: "Task",
+            hintText: "Eg, Go to store..."),
       ),
     );
   }
@@ -64,7 +70,9 @@ class _UpdateTask extends State<UpdateTask> {
       child: TextField(
         controller: _vendorTextInput,
         decoration: InputDecoration(
-            hintText: "Eg, Lifemate furnitures, Oros Computers, Mint and hams"),
+            border: OutlineInputBorder(),
+            labelText: "Description",
+            hintText: "Eg, Give a short description"),
       ),
     );
   }
@@ -75,7 +83,10 @@ class _UpdateTask extends State<UpdateTask> {
       padding: EdgeInsets.all(10),
       child: TextField(
         controller: _amountTextInput,
-        decoration: InputDecoration(hintText: "Eg, 1500"),
+        decoration: InputDecoration(
+            border: OutlineInputBorder(),
+            labelText: "Cost",
+            hintText: "Eg, 1500"),
       ),
     );
   }
