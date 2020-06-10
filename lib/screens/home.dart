@@ -9,6 +9,7 @@ final oCcy = new NumberFormat("#,##0.00", "en_US");
 final formatCurrency = new NumberFormat.simpleCurrency();
 
 class MyHomePage extends StatefulWidget {
+  static const routeName = '/home';
   MyHomePage({Key key, this.title}) : super(key: key);
   final String title;
 
@@ -122,9 +123,9 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
+      // appBar: AppBar(
+      //   title: Text(widget.title),
+      // ),
       body: FutureBuilder(
           future: listItems,
           builder: (context, snapshot) {
