@@ -98,16 +98,20 @@ class _UpdateTask extends State<UpdateTask> {
         resizeToAvoidBottomInset: true,
         appBar: AppBar(
           title: Text('Update Task'),
+          backgroundColor: Colors.indigo,
         ),
         body: ListView(
           children: <Widget>[
+            SizedBox(
+              height: 20,
+            ),
             inputWidget(),
             inputWidgetForVendor(),
             inputWidgetForAmount(),
             Container(
               margin: EdgeInsets.fromLTRB(45, 1, 45, 1),
               child: RaisedButton(
-                color: Colors.blueAccent,
+                color: Colors.indigo,
                 child:
                     Text('Update Task', style: TextStyle(color: Colors.white)),
                 onPressed: () async {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:task/screens/details.dart';
 import 'package:task/screens/getting_started_screen.dart';
+import 'package:task/screens/login_screen.dart';
 import 'package:task/screens/settings.dart';
 
 class MainDrawer extends StatelessWidget {
@@ -12,7 +13,7 @@ class MainDrawer extends StatelessWidget {
           Container(
             width: double.infinity,
             padding: EdgeInsets.all(20),
-            color: Theme.of(context).primaryColor,
+            color: Colors.indigo,
             child: Center(
               child: Column(
                 children: <Widget>[
@@ -58,8 +59,10 @@ class MainDrawer extends StatelessWidget {
               ),
             ),
             onTap: () {
-              Navigator.of(context).pop();
-              Navigator.of(context).pushNamed(Details.routeName);
+              // Navigator.of(context).pop();
+              // Navigator.of(context)
+              //     .push(MaterialPageRoute(builder: (context) => Details()));
+              // Navigator.of(context).pushNamed(Details.routeName);
             },
           ),
           ListTile(
@@ -71,8 +74,9 @@ class MainDrawer extends StatelessWidget {
               ),
             ),
             onTap: () {
-              Navigator.of(context).pop();
-              Navigator.of(context).pushNamed(Settings.routeName);
+              // Navigator.of(context).pop();
+              // Navigator.of(context)
+              //     .push(MaterialPageRoute(builder: (context) => Settings()));
             },
           ),
           ListTile(
@@ -84,8 +88,12 @@ class MainDrawer extends StatelessWidget {
               ),
             ),
             onTap: () {
-              Navigator.of(context).pop();
-              Navigator.of(context).pushNamed(GettingStartedScreen.routeName);
+              // Navigator.of(context).push(MaterialPageRoute(
+              //     builder: (context) => GettingStartedScreen()));
+              //  Navigator.pushReplacement(
+              //       context,
+              //       MaterialPageRoute(
+              //           builder: (context) => GettingStartedScreen()));
             },
           ),
         ],

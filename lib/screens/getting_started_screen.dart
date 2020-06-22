@@ -6,7 +6,6 @@ import 'package:task/widgets/slideItem.dart';
 import '../widgets/slide_dots.dart';
 
 class GettingStartedScreen extends StatefulWidget {
-  static const routeName = '/gettingstarted';
   @override
   _GettingStartedScreenState createState() => _GettingStartedScreenState();
 }
@@ -107,7 +106,8 @@ class _GettingStartedScreenState extends State<GettingStartedScreen> {
                     color: Theme.of(context).primaryColor,
                     textColor: Colors.white,
                     onPressed: () {
-                      Navigator.of(context).pushNamed(LoginScreen.routeName);
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => LoginScreen()));
                     },
                   ),
                 ],

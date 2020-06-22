@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:task/screens/dashboard.dart';
+import 'package:task/screens/main_dashboard.dart';
 import 'package:task/screens/password_reset.dart';
 // import 'package:task/screens/home.dart';
 
@@ -8,6 +9,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         // title: Text('Login'),
         backgroundColor: Colors.white,
@@ -45,7 +47,8 @@ class LoginScreen extends StatelessWidget {
                 style: TextStyle(fontSize: 18, color: Colors.black54),
                 decoration: InputDecoration(
                   filled: true,
-                  fillColor: Theme.of(context).primaryColor,
+                  // fillColor: Theme.of(context).primaryColor,
+                  // prefixIcon: Icon(Icons.email),
                   prefixIcon: Icon(Icons.email),
                   hintText: "Email",
                   contentPadding: const EdgeInsets.all(15),
@@ -71,7 +74,7 @@ class LoginScreen extends StatelessWidget {
                 style: TextStyle(fontSize: 18, color: Colors.black54),
                 decoration: InputDecoration(
                   filled: true,
-                  fillColor: Theme.of(context).primaryColor,
+                  // fillColor: Theme.of(context).primaryColor,
                   // Colors.white,
                   prefixIcon: Icon(Icons.lock),
                   hintText: "Password",
@@ -95,20 +98,20 @@ class LoginScreen extends StatelessWidget {
               ),
               FlatButton(
                 child: Text(
-                  'Login',
+                  "Login",
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 18,
                   ),
                 ),
-                shape: OutlineInputBorder(
-                  borderSide: BorderSide(
-                      color: Theme.of(context).primaryColor, width: 2),
+                shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(5),
                 ),
                 padding: const EdgeInsets.all(15),
-                textColor: Theme.of(context).primaryColor,
+                color: Theme.of(context).primaryColor,
+                textColor: Colors.white,
                 onPressed: () {
-                  Navigator.of(context).pushNamed(DashboardPage.routeName);
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => MainDashboard()));
                 },
               ),
               Row(
@@ -126,7 +129,8 @@ class LoginScreen extends StatelessWidget {
                       style: TextStyle(fontSize: 18),
                     ),
                     onPressed: () {
-                      Navigator.of(context).pushNamed(PasswordReset.routeName);
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => PasswordReset()));
                     },
                   ),
                 ],

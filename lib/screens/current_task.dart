@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:task/screens/home.dart';
 import 'package:task/screens/main_drawer.dart';
 import 'package:task/screens/settings.dart';
+import 'package:task/screens/taskreport.dart';
 
 class CurrentTask extends StatelessWidget {
   @override
@@ -12,6 +13,16 @@ class CurrentTask extends StatelessWidget {
       child: Scaffold(
           appBar: AppBar(
               title: const Text('Task Management'),
+              backgroundColor: Theme.of(context).primaryColor,
+              leading: IconButton(
+                icon: Icon(
+                  Icons.arrow_back_ios,
+                  color: Colors.white,
+                ),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
               bottom: TabBar(
                 // isScrollable: true,
                 tabs: choices.map<Widget>((Choice choice) {
@@ -21,11 +32,11 @@ class CurrentTask extends StatelessWidget {
                   );
                 }).toList(),
               )),
-          drawer: MainDrawer(),
+          // drawer: MainDrawer(),
           body: TabBarView(
             children: <Widget>[
               MyHomePage(),
-              Settings(),
+              BasicDateField(),
             ],
           )),
     ));
@@ -40,6 +51,6 @@ class Choice {
 
 const List<Choice> choices = <Choice>[
   Choice(title: "TASK", icon: Icons.assignment),
-  Choice(title: "PENDING", icon: Icons.access_time),
+  Choice(title: "FILTER", icon: Icons.sort),
   // Choice(title: "COMPLETED", icon: Icons.directions_walk)
 ];

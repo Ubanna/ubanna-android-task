@@ -142,6 +142,7 @@ class _MyHomePageState extends State<MyHomePage> {
             );
           }),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.indigo,
         onPressed: () async {
           await Navigator.of(context)
               .push(MaterialPageRoute(builder: (context) => AddTask()));

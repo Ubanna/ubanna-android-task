@@ -21,7 +21,9 @@ class _DashboardPageState extends State<DashboardPage> {
     Center(
       child: Text("Search"),
     ),
-    Settings(),
+    Center(
+      child: Text("Settings"),
+    ),
     Center(
       child: Text("Profile"),
     ),
